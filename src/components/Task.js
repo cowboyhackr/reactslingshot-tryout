@@ -1,13 +1,14 @@
 import React from 'react';
+import Remarkable from 'remarkable'
 
-let Task = React.class({
-  rawMarkup: function() {
+class Task extends React.Component{
+  rawMarkup() {
     let md = new Remarkable();
     let rawMarkup = md.render(this.props.children.toString());
     return { __html: rawMarkup };
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <p>
      
@@ -17,6 +18,6 @@ let Task = React.class({
       </p>
     );
   }
-});
+}
 
 export default Task;

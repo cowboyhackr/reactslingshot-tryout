@@ -1,11 +1,11 @@
-import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
+import React from 'react';
+
 import TaskCheckbox from './TaskCheckbox';
 import Task from './Task';
 
 
-let TaskList = React.class({
-  render: function() {
+class TaskList extends React.Component{
+  render() {
     let taskNodes = this.props.data.map(function(task) {
       return (
         <div key={task.id}>
@@ -23,7 +23,7 @@ let TaskList = React.class({
       </div>
     );
   }
-});
+}
 
 export default TaskList;
 

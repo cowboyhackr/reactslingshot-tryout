@@ -1,24 +1,31 @@
-let TaskForm = React.class({
-  getInitialState: function() {
+import React, {PropTypes} from 'react';
+
+
+class TaskForm extends React.Component {
+  getInitialState() {
     return {author: '', text: ''};
-  },
-  handleAuthorChange: function(e) {
+  }
+
+  handleAuthorChange(e) {
     this.setState({author: e.target.value});
-  },
-  handleTextChange: function(e) {
+  }
+
+  handleTextChange(e) {
     this.setState({text: e.target.value});
-  },
-  handleSubmit: function(e) {
+  }
+
+  handleSubmit(e) {
     e.preventDefault();
-    var author = this.state.author.trim();
-    var text = this.state.text.trim();
+    let author = this.state.author.trim();
+    let text = this.state.text.trim();
     if (!text || !author) {
       return;
     }
     this.props.onTaskSubmit({author: author, text: text});
     this.setState({author: '', text: ''});
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <form className="taskForm" onSubmit={this.handleSubmit}>
         <input
@@ -37,6 +44,11 @@ let TaskForm = React.class({
       </form>
     );
   }
-});
+}
+
+TaskForm.propTypes = {
+  onTaskSubmit: PropTypes.func.isRequired
+
+};
 
 export default TaskForm;
