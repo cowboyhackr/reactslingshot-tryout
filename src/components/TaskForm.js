@@ -2,8 +2,10 @@ import React, {PropTypes} from 'react';
 
 
 class TaskForm extends React.Component {
-  getInitialState() {
-    return {author: '', text: ''};
+
+  constructor(props){
+    super(props);
+    this.state = {author: '', text: ''}
   }
 
   handleAuthorChange(e) {

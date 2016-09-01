@@ -1,7 +1,13 @@
-import React from 'react';
-import Remarkable from 'remarkable'
+import React, {PropTypes} from 'react';
+import Remarkable from 'remarkable';
 
 class Task extends React.Component{
+
+  constructor(props){
+    super(props);
+
+  }
+
   rawMarkup() {
     let md = new Remarkable();
     let rawMarkup = md.render(this.props.children.toString());
@@ -19,5 +25,11 @@ class Task extends React.Component{
     );
   }
 }
+
+Task.propTypes = {
+  author: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired
+
+};
 
 export default Task;

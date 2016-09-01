@@ -2,9 +2,10 @@ import React from 'react';
 
 class TaskCheckbox extends React.Component{
 
-  getInitialState() {
+  constructor(props) {
+    super(props);
     //console.log("initial state");
-    return {complete: false};
+    this.state = {complete: false};
   }
 
   handleChange(/*e*/) {

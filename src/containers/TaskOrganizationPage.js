@@ -4,14 +4,10 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions/fuelSavingsActions';
 import TaskBox from '../components/TaskBox';
 
-export const TaskOrganization = (props) => {
-  // return (
-  //   <FuelSavingsForm
-  //     saveFuelSavings={props.actions.saveFuelSavings}
-  //     calculateFuelSavings={props.actions.calculateFuelSavings}
-  //     fuelSavings={props.fuelSavings}
-  //   />
-  // );
+export const TaskOrganization = () => {
+  return (
+    <TaskBox/>
+  );
 };
 
 // FuelSavingsPage.propTypes = {

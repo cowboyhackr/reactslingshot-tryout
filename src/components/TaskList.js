@@ -5,6 +5,12 @@ import Task from './Task';
 
 
 class TaskList extends React.Component{
+
+  constructor(props){
+    super(props);
+
+  }
+
   render() {
     let taskNodes = this.props.data.map(function(task) {
       return (

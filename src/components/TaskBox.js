@@ -5,6 +5,12 @@ import TaskList from './TaskList';
 
 class TaskBox extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {data:[]};
+
+
+  }
 
   componentDidMount() {
     this.loadTasksFromServer();
@@ -36,9 +42,9 @@ class TaskBox extends React.Component {
     });
   }
 
-  getInitialState() {
-    return {data: []};
-  }
+  // getInitialState() {
+  //   return {data: []};
+  // }
 
   loadTasksFromServer() {
     $.ajax({
