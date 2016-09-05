@@ -4,23 +4,19 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions/taskActions';
 //import TaskBox from '../components/TaskBox';
 import TaskForm from '../components/TaskForm';
-import TaskList from '../components/TaskList';
+//import TaskList from '../components/TaskList';
 
-export const TaskOrganization = (props) => {
-	debugger;
+export const TaskOrganizationPage = (props) => {
+//<TaskList  />
   return (
-
-      <div >
-        <h1>stARt (Agile Results) Day List</h1>
-        <TaskList  />
-        <TaskForm saveNewTask={props.actions.saveNewTask} task={props.task}/>
-
-      </div>
-
+        <TaskForm 
+        saveNewTask={props.actions.saveNewTask} 
+        task={props.task}
+        />
   );
 };
 
-TaskOrganization.propTypes = {
+TaskOrganizationPage.propTypes = {
   //url: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
   task: PropTypes.object.isRequired
@@ -44,4 +40,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-	)(TaskOrganization);
+	)(TaskOrganizationPage);
