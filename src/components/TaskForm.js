@@ -1,55 +1,65 @@
 import React, {PropTypes} from 'react';
+import TaskTextInput from './TaskTextInput';
 
 
 class TaskForm extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {author: '', text: ''}
+  constructor(props, context){
+    super(props, context);
+
+    this.save = this.save.bind(this);
   }
 
-  handleAuthorChange(e) {
-    this.setState({author: e.target.value});
+  handleTaskContextChange() {
+
+    //this.props.context = e.target.value;
+    //this.setState({author: e.target.value});
   }
 
-  handleTextChange(e) {
-    this.setState({text: e.target.value});
+  handleDescriptionChange() {
+ 
+    //this.props.description;
+    //this.setState({text: e.target.value});
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    let author = this.state.author.trim();
-    let text = this.state.text.trim();
-    if (!text || !author) {
-      return;
-    }
-    this.props.onTaskSubmit({author: author, text: text});
-    this.setState({author: '', text: ''});
+  save() {
+
+    this.props.saveNewTask(this.props.task);
+ 
+    // let author = this.state.author.trim();
+    // let text = this.state.text.trim();
+    // if (!text || !author) {
+    //   return;
+    // }
+    // this.props.onTaskSubmit({author: author, text: text});
+    // this.setState({author: '', text: ''});
   }
 
   render() {
+    const {task} = this.props;
+
     return (
-      <form className="taskForm" onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          placeholder="Task..."
-          value={this.state.author}
-          onChange={this.handleAuthorChange}
-        />
-        <input
-          type="text"
-          placeholder="Context..."
-          value={this.state.text}
-          onChange={this.handleTextChange}
-        />
-        <input type="submit" value="Post" />
-      </form>
+      <div >
+                <TaskTextInput
+                onChange={this.handleDescriptionChange}
+                name="description"
+                value={task.description}/>
+
+                <TaskTextInput
+                onChange={this.handleTaskContextChange}
+                name="context"
+                value={task.context}/> 
+
+        <input type="submit" value="Save" onClick={this.save} />
+      </div>
     );
   }
 }
 
 TaskForm.propTypes = {
-  onTaskSubmit: PropTypes.func.isRequired
+
+  saveNewTask:PropTypes.func.isRequired,
+  task:PropTypes.object.isRequired
 
 };
 

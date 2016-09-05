@@ -1,30 +1,47 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from '../actions/fuelSavingsActions';
-import TaskBox from '../components/TaskBox';
+import * as actions from '../actions/taskActions';
+//import TaskBox from '../components/TaskBox';
+import TaskForm from '../components/TaskForm';
+import TaskList from '../components/TaskList';
 
-export const TaskOrganization = () => {
+export const TaskOrganization = (props) => {
+	debugger;
   return (
-    <TaskBox/>
+
+      <div >
+        <h1>stARt (Agile Results) Day List</h1>
+        <TaskList  />
+        <TaskForm saveNewTask={props.actions.saveNewTask} task={props.task}/>
+
+      </div>
+
   );
 };
 
-// FuelSavingsPage.propTypes = {
-//   actions: PropTypes.object.isRequired,
-//   fuelSavings: PropTypes.object.isRequired
-// };
+TaskOrganization.propTypes = {
+  //url: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired,
+  task: PropTypes.object.isRequired
 
-// function mapStateToProps(state) {
-//   return {
-//     fuelSavings: state.fuelSavings
-//   };
-// }
+};
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(actions, dispatch)
-//   };
-// }
 
-export default TaskOrganization;
+
+function mapStateToProps(state) {
+  return {
+    task: state.task
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+	)(TaskOrganization);

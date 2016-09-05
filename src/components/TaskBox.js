@@ -1,6 +1,9 @@
 import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import TaskForm from './TaskForm';
 import TaskList from './TaskList';
+import * as actions from '../actions/taskActions';
 
 
 class TaskBox extends React.Component {
@@ -67,7 +70,7 @@ class TaskBox extends React.Component {
       <div className="taskBox">
         <h1>stARt (Agile Results) Day List</h1>
         <TaskList data={this.state.data} />
-        <TaskForm onTaskSubmit={this.handleTaskSubmit} />
+        <TaskForm saveNewTask={props.actions.saveNewTask} task={props.task}/>
 
       </div>
     );
@@ -77,6 +80,8 @@ class TaskBox extends React.Component {
 export default TaskBox;
 
 TaskBox.propTypes = {
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired,
+  task: PropTypes.object.isRequired
 
 };
